@@ -90,20 +90,10 @@ def CORR(A: pd.DataFrame, B: pd.DataFrame, n) -> pd.DataFrame:
     Returns:    
         pd.DataFrame: corr data with multi-index
     """
-    At = pivot_table(A)
-    Bt = pivot_table(B)
-
-    for i in range(len(At.columns)):
-        colres = []
-        for j in range(len(At)):
-            if j < n-1:
-                colres.append(np.nan)
-            else:
-                colres.append(
-                    At.iloc[j-n+1:j+1, i].corr(Bt.iloc[j-n+1:j+1, i]))
-        At.iloc[:, i] = colres
-    res = stack_table(At)
-    return res
+    A = A.unstack()
+    B = B.unstack()
+    res = A.rolling(n).corr(B)
+    return res.stack()
 
 
 def DELTA(A: pd.DataFrame, n) -> pd.DataFrame:

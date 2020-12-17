@@ -791,15 +791,23 @@ def plot_cumulative_returns_by_quantile(quantile_returns,
 
     ret_wide = quantile_returns.unstack('factor_quantile')
 
+    quantiles = ret_wide.columns
+    ret_wide['top_bottom'] = ret_wide[max(
+        quantiles)] - ret_wide[min(quantiles)]
+    if ret_wide['top_bottom'].sum() < 0:
+        ret_wide['top_bottom'] = -ret_wide['top_bottom']
+
+
     ret_wide = ret_wide.resample(freq).first()
     cum_ret = ret_wide.apply(perf.cumulative_returns)
+    
 
     cum_ret = cum_ret.loc[:, ::-1]  # we want negative quantiles as 'red'
 
     cum_ret.plot(lw=2, ax=ax, cmap=cm.coolwarm)
     ax.legend()
-    ymin, ymax = cum_ret.min().min(), cum_ret.max().max()
 
+    # ymin, ymax = cum_ret.min().min(), cum_ret.max().max()
     # ax.set(ylabel='Log Cumulative Returns',
     #        title='''Cumulative Return by Quantile
     #                 ({} Period Forward Return)'''.format(period),

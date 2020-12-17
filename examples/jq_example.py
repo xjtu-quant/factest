@@ -4,7 +4,7 @@
 try:
     import sys
     import traceback
-    sys.path.append('../../')
+    sys.path.append('..')
     from factest.data_service.jq_data import JQData
     from factest.data_service.local_data import LocalData
     from factest.utils import login_jqdata
@@ -21,7 +21,7 @@ except ImportError as e:
 login_jqdata('./config/jqdata.json')
 data_source = JQData()
 # 本地数据源
- 
+
 
 # %%
 
@@ -46,13 +46,7 @@ factest.set_formula(formula)  # 因子计算公式
 # %%
 # 计算因子值
 factors = factest.factors()
-factors.to_csv('jq_f.csv')
 
-# %%
-# 交易价格
-quote = data_source.QUOTE
-quote.to_csv('local_quote.csv')
-quote
 # %%
 
 # 因子分析 一定要在画图之前运行
@@ -127,4 +121,3 @@ factest.plot_top_bottom_quantile_turnover()
 # 因子排序的自相关
 factest.plot_factor_rank_auto_correlation()
 # %%
- 

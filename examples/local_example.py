@@ -1,5 +1,8 @@
 # %%
 # 导入相关库
+from numpy.lib.function_base import quantile
+
+
 try:
     import sys
     import traceback
@@ -13,7 +16,7 @@ except ImportError as e:
 # %%
 
 # 因子计算公式
-FAC_FROM = "ABS(CLOSE/LOW + HIGH/OPEN)"
+FAC_FROM = '(-1*CORR(RANK(DELTA(LOG(VOLUME), 1)),RANK(((CLOSE - OPEN) / OPEN)), 6))'
 
 # 本地数据的地址
 DATA_BASE_DIR = 'data/daily_price.h5'
@@ -151,6 +154,4 @@ factest.plot_top_bottom_quantile_turnover()
 # 因子排序的自相关
 factest.plot_factor_rank_auto_correlation()
 
-# %%
-
-# %%
+# 
