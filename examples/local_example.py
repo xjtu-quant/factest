@@ -155,3 +155,7 @@ factest.plot_top_bottom_quantile_turnover()
 factest.plot_factor_rank_auto_correlation()
 
 # 
+
+# %%
+
+# %%
