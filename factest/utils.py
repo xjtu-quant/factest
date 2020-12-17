@@ -2,6 +2,7 @@ import json
 from jqdatasdk import auth
 
 from .data_service.base_data import BaseDataSource
+from .meta_data.data_key_words import DATA_KEY_WORDS
 
 
 def get_benchmark_code(benchmark_name: str) -> str:
@@ -72,45 +73,15 @@ def login_jqdata(login_info_file):
         auth(info['username'], info['password'])
 
 
-def load_test_config(test_info_file) -> dict:
-    """load test config
+def load_data_key_words() -> list:
+    """load data keywords
 
-    Args:
-        test_info_file (str): testing config file path
-
-    Returns:
-        dict: test info
+    Returns
+    -------
+    list
+        data keywords
     """
-    info = {}
-    with open(test_info_file, encoding='utf8') as f:
-        config_info = json.load(f)
-        info['benchmark'] = get_benchmark_code(config_info['benchmark'])
-        info['begin_date'] = config_info['begin_date']
-        info['end_date'] = config_info['end_date']
-        info['deal_method'] = config_info['deal_method']
-        info['universe'] = get_universe_code(config_info['universe'])
-        info['period'] = get_peroid_tuple(config_info['period'])
-        info['formula'] = config_info['formula']
-        info['quantile'] = int(config_info['quantile'])
-        info['weight_method'] = config_info['weight_method']
-        info['long_short'] = config_info['long_short']
-
-    return info
-
-
-def load_data_key_words(key_words_file: str) -> list:
-    """load keywords file
-
-    Args:
-        key_words_file (str): keywords file
-
-    Returns:
-        list: keywords list
-    """
-    with open(key_words_file, 'r') as f:
-        keywords = f.read()
-
-    return keywords.strip().split('\n')
+    return DATA_KEY_WORDS
 
 
 def get_all_stocks(data_source: BaseDataSource):

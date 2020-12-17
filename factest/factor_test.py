@@ -60,8 +60,7 @@ class FactorTest():
         """load data key words. eg: 'OPEN', 'CLOSE'
 
         """
-        self.__data_key_words = load_data_key_words(
-            '../meta_data/data_key_words.txt')
+        self.__data_key_words = load_data_key_words()
 
     def __clear_data(self):
         """clear data
