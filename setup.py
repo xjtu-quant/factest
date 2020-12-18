@@ -15,7 +15,7 @@ install_reqs = [
 
 setup(
     name="factest",
-    version="0.0.6",
+    version="0.0.7",
     keywords=["pip", "factest", "alpha factor", "quant"],
     description="",
     long_description="A Fantistic Factor Analysising Tools For Quant",
