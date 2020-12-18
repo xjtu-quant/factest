@@ -154,8 +154,4 @@ factest.plot_top_bottom_quantile_turnover()
 # 因子排序的自相关
 factest.plot_factor_rank_auto_correlation()
 
-# 
-
-# %%
-
-# %%
+ 
