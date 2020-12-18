@@ -150,7 +150,7 @@ class LocalData(BaseDataSource):
             elif self._deal_method == 'close':
                 data = self._data.close
             elif self._deal_method == 'vwap':
-                data = self._data.adj_vwap
+                data = self._data.vwap
             data = data.unstack()
             data.columns = [t[1] for t in data.columns]
             self._data.quote = data
