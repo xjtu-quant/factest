@@ -1,6 +1,3 @@
-import json
-from jqdatasdk import auth
-
 from .data_service.base_data import BaseDataSource
 from .meta_data.data_key_words import DATA_KEY_WORDS
 
@@ -59,19 +56,6 @@ def get_peroid_tuple(period_str: str) -> tuple:
         tuple: periods tuple
     """
     return tuple(map(int, period_str.split(' ')))
-
-
-def login_jqdata(login_info_file):
-    """login to jqdata
-
-        Args:
-            login_info_file (str): login infomation file
-
-        """
-    with open(login_info_file) as f:
-        info = json.load(f)
-        auth(info['username'], info['password'])
-
 
 def load_data_key_words() -> list:
     """load data keywords

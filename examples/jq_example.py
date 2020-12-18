@@ -17,8 +17,7 @@ except ImportError as e:
 
 # 选择数据源
 
-# 聚宽数据源 需要在test/config 文件夹中配置JQData的username和password
-login_jqdata('./config/jqdata.json')
+# 聚宽数据源 需要先登录JQData账号
 data_source = JQData()
 # 本地数据源
 
