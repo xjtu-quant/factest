@@ -9,7 +9,7 @@ A Fantistic Factor Analysising Tools For Quant
 ### 安装factest
 
 ```bash
-pip install factest -i https://pypi.python.org/simple
+pip install factest
 ```
 
 **注意: 默认不会安装jqdatasdk和talib两个包**
