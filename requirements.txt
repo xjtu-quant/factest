@@ -17,6 +17,7 @@ colorama==0.4.4
 cryptography==3.3.1
 cvxpy==1.0.21
 cycler==0.10.0
+Cython @ file:///tmp/build/80754af9/cython_1605457613176/work
 databricks-cli==0.14.1
 decorator==4.4.2
 defusedxml==0.6.0
