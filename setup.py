@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="factest",
     version="0.0.1",
-    keywords=("pip", "factest", "alpha factor", "quant"),
+    keywords=["pip", "factest", "alpha factor", "quant"],
     description="",
     long_description="A Fantistic Factor Analysising Tools For Quant",
     license="MIT Licence",
