@@ -44,4 +44,11 @@ pip install TA_Lib-0.4.19-cp37-cp37m-win_amd64.whl
 详细见examples
 
 
+## 数据
+
+### A股日行情历史
+
+链接：https://pan.baidu.com/s/1dpdg9jNMa_lYSp_jPvrKCQ 
+提取码：k9dm
+
 
