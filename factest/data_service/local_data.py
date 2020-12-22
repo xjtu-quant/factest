@@ -143,6 +143,7 @@ class LocalData(BaseDataSource):
     def QUOTE(self) -> pd.DataFrame:
         if self._data is None:
             self.__reload_all_data()
+
         if self._data.quote is None:
             data = None
             if self._deal_method == 'open':
@@ -153,7 +154,8 @@ class LocalData(BaseDataSource):
                 data = self._data.vwap
             data = data.unstack()
             data.columns = [t[1] for t in data.columns]
-            self._data.quote = data
+            # next day
+            self._data.quote = data.shift(-1)
         return self._data.quote
 
     @property

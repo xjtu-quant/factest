@@ -53,19 +53,6 @@ def get_index_code(index_name: str) -> str:
     elif index_name == 'zzqz':
         return '000985.XSHG'
 
-    """
-    if data is empty, get price data from jqdata.
-    Args:
-        data (pd.DataFrame): original data
-        name (str): price type name
-        universe: stocks
-        begin_date: begin date
-        end_date: end date
-        fq: price-adjust method. defualt is None
-    Returns:
-        pd.DataFrame: price data with multi-index
-    """
-
 
 def get_jq_price(data: pd.DataFrame, name: str, universe, begin_date, end_date, fq=None) -> pd.DataFrame:
     """if data is empty, get price data from jqdata.
@@ -195,7 +182,7 @@ def get_jq_quote(data: pd.DataFrame, universe, price_type: str, begin_date, end_
         data = pd.DataFrame(data.unstack())
         data = data[price_type]
 
-    return data
+    return data.shift(-1)
 
 
 def get_universe(stocks, date):

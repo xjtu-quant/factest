@@ -58,7 +58,6 @@ class FactorTest():
 
     def __load_data_key_words(self):
         """load data key words. eg: 'OPEN', 'CLOSE'
-
         """
         self.__data_key_words = load_data_key_words()
 
@@ -134,9 +133,6 @@ class FactorTest():
 
     def prices(self) -> pd.DataFrame:
         """get price data
-
-        Returns:
-            pd.DataFrame: price data
         """
         return self.__data.QUOTE
 
@@ -157,17 +153,16 @@ class FactorTest():
 
     def set_data_source(self, data_source: BaseDataSource):
         """set data source
-
-        Args:
-            data_source (BaseDataSource): new data source instance or data source name
         """
         self.__data = data_source
 
     def set_benchmark(self, benchmark: str):
-        """set benchmark
+        """set bench mark
 
-        Args:
-            benchmark (str): new benchmark
+        Parameters
+        ----------
+        benchmark : str
+            benchmark
         """
         self.__data.set_benchmark(get_benchmark_code(benchmark))
         self.__clear_data()
@@ -175,9 +170,12 @@ class FactorTest():
     def set_date_range(self, begin_date: str, end_date: str):
         """set date range
 
-        Args:
-            begin_date (str): new begin date
-            end_date (str): new end date
+        Parameters
+        ----------
+        begin_date : str
+            begin date
+        end_date : str
+            end date
         """
         self.__data.set_date_range(begin_date, end_date)
         self.__clear_data()
@@ -185,8 +183,10 @@ class FactorTest():
     def set_deal_method(self, deal_method: str):
         """set deal method
 
-        Args:
-            deal_method (str): new deal method
+        Parameters
+        ----------
+        deal_method : str
+            deal method
         """
         self.__data.set_deal_method(deal_method)
         self.__clear_data()
@@ -194,8 +194,10 @@ class FactorTest():
     def set_universe(self, universe):
         """set universe
 
-        Args:
-            universe: new universe
+        Parameters
+        ----------
+        universe :
+            universe
         """
         if isinstance(universe, str):
             if universe != 'all':
@@ -204,19 +206,23 @@ class FactorTest():
         self.__clear_data()
 
     def set_period(self, period: tuple):
-        """set peroid
+        """set period
 
-        Args:
-            periodStr (str): new peroid
+        Parameters
+        ----------
+        period : tuple
+            backtesting period
         """
         self.__period = period
         self.__clear_data()
 
     def set_formula(self, formula: str):
-        """set formula
+        """set factor formula
 
-        Args:
-            formula (str): new formula
+        Parameters
+        ----------
+        formula : str
+            factor formula
         """
         self.__formula = formula
         self.__clear_data()
@@ -224,8 +230,10 @@ class FactorTest():
     def set_quantile(self, quantile: int):
         """set quantile
 
-        Args:
-            quantile (int): new quantile
+        Parameters
+        ----------
+        quantile : int
+            quantile number
         """
         self.__quantile = quantile
         self.__clear_data()
@@ -233,8 +241,10 @@ class FactorTest():
     def set_weight_method(self, weight_method: str):
         """set weight method
 
-        Args:
-            weight_method (weight_method): weight method
+        Parameters
+        ----------
+        weight_method : str
+            weight method
         """
         self.__weight_method = weight_method
         self.__clear_data()
@@ -242,14 +252,17 @@ class FactorTest():
     def set_long_short(self, long_short: bool):
         """set long short
 
-        Args:
-            long_short (bool): if do both long position and short position
+        Parameters
+        ----------
+        long_short : bool
+            if do both long position and short position or not
         """
         self.__long_short = long_short
         self.__clear_data()
 
     def return_analysis(self):
-
+        """calculate return performance
+        """
         factor_data = self.factor_data()
         long_short = self.__long_short
         group_neutral = self.__group_neutral
@@ -324,6 +337,8 @@ class FactorTest():
             )
 
     def information_analysis(self):
+        """calculate information performance
+        """
         self.__ic = perf.factor_information_coefficient(
             self.factor_data(), self.__group_neutral)
 
@@ -342,6 +357,8 @@ class FactorTest():
             )
 
     def turnover_analysis(self):
+        """calculate turnover performance
+        """
         if self.__turnover_periods is None:
             input_periods = utils.get_forward_returns_columns(
                 self.factor_data().columns, require_exact_day_multiple=True,).to_numpy()

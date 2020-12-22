@@ -134,3 +134,6 @@ out
 
 # pip
 .pypirc
+
+# tests
+tests

@@ -1,12 +1,7 @@
 # %%
 # 导入相关库
-from numpy.lib.function_base import quantile
-
-
 try:
-    import sys
     import traceback
-    sys.path.append('..')
     from factest.data_service.local_data import LocalData
     from factest.factor_test import FactorTest
 except ImportError as e:

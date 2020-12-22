@@ -2,24 +2,19 @@
 
 # 导入相关库
 try:
-    import sys
     import traceback
-    sys.path.append('..')
     from factest.data_service.jq_data import JQData
-    from factest.data_service.local_data import LocalData
-    from factest.utils import login_jqdata
     from factest.factor_test import FactorTest
+    from jqdatasdk import auth
 except ImportError as e:
     print('导入库失败!')
     traceback.print_exc()
 
 # %%
 
-# 选择数据源
-
 # 聚宽数据源 需要先登录JQData账号
+auth('', '')
 data_source = JQData()
-# 本地数据源
 
 
 # %%
